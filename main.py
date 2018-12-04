@@ -44,11 +44,14 @@ def wyswietlLitere(strip,litera):
     if litera in listaZnakow:
         zapalPojedyncze(strip,slownikLampek[litera])
         time.sleep(czas)
+        strip.show()
+        time.sleep(czas*0.2)
 
 
 def wyswietlTekst(strip,text):
     for i in text.upper():
         wyswietlLitere(strip,i)
+
     strip.show()
 
 
