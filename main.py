@@ -6,6 +6,7 @@ from neopixel import *
 import argparse
 from ColourDict import losowyKolor
 from LampkiDict import slownikLampek
+from zegar import ZegarBinarny
 import random
 listaZnakow = "QWERTYUIOPASDFGHJKLZXCVBNM!@#?ĄĘŚŁŻŹĆÓ"
 
@@ -81,4 +82,6 @@ if __name__ == "__main__":
     strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
     # Intialize the library (must be called once before other functions).
     strip.begin()
-    wyswietlTekst(strip,"adolf")
+    while 2>1:
+        ZegarBinarny(strip)
+        time.sleep(1)
