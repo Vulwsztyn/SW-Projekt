@@ -26,7 +26,7 @@ def clear(strip):
     color = Color(0, 0, 0)
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, color)
-    strip.show
+    strip.show()
 
 def zapalPojedyncze(strip, i):
     strip.setPixelColor(i, losowyKolor())
@@ -83,5 +83,6 @@ if __name__ == "__main__":
     # Intialize the library (must be called once before other functions).
     strip.begin()
     while 2>1:
+        clear(strip)
         ZegarBinarny(strip)
         time.sleep(1)
