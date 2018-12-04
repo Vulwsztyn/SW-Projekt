@@ -1,3 +1,4 @@
+from neopixel import *
 def losowyKolor():
     a,b = random.choice(list(colour.items()))
     return b
