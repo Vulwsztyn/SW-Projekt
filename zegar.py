@@ -8,7 +8,7 @@ from LampkiDict import slownikLampek
 import random
 
 
-def wypiszSec(strip, i):
+def wypiszGodz(strip, i):
     for i, v in enumerate(i):
         if v == '1':
             strip.setPixelColor(slownikLampek['F'] - i, losowyKolor())
@@ -19,7 +19,7 @@ def wypiszMin(strip, i):
         if v == '1':
             strip.setPixelColor(slownikLampek['N']+ 1 + i, losowyKolor())
 
-def wypiszGodz(strip, i):
+def wypiszSec(strip, i):
     for i, v in enumerate(i):
         if v == '1':
             strip.setPixelColor(slownikLampek['T'] - i, losowyKolor())
