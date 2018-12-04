@@ -21,6 +21,7 @@ def wypiszMin(strip, i):
 
 def wypiszSec(strip, i):
     for i, v in enumerate(i):
+        print(v)
         if v == '1':
             strip.setPixelColor(slownikLampek['T'] - i, losowyKolor())
 
@@ -28,6 +29,7 @@ def wypiszDzien(strip, i):
     for i, v in enumerate(i):
         if v == '1':
             strip.setPixelColor(slownikLampek['?'] + i, losowyKolor())
+
 
 
 def ZegarBinarny(strip):
@@ -40,9 +42,11 @@ def ZegarBinarny(strip):
     min = "{0:b}".format(min)
     sec = "{0:b}".format(sec)
     day = "{0:b}".format(day)
-    wypiszDzien(day)
-    wypiszGodz(hour)
-    wypiszMin(min)
-    wypiszSec(sec)
+    wypiszDzien(strip,day)
+    wypiszGodz(strip,hour)
+    wypiszMin(strip,min)
+    wypiszSec(strip,sec)
     strip.show()
+
+
 
