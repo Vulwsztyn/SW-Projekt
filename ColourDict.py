@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 from neopixel import *
+import random
 def losowyKolor():
     a,b = random.choice(list(colour.items()))
     return b
