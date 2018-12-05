@@ -1,31 +1,31 @@
 import datetime
 import requests
 import time
-# from neopixel import *
+from neopixel import *
 import argparse
-# from ColourDict import losowyKolor,colour
+from ColourDict import losowyKolor,colour
 from LampkiDict import slownikLampek
 import random
 
 
 def wypiszGodz(strip, i):
-    for i, v in enumerate(i):
+    for i, v in enumerate(i[::-1]):
         if v == '1':
             strip.setPixelColor(slownikLampek['F'] - i, colour['blue'])
 
 
 def wypiszMin(strip, i):
-    for i, v in enumerate(i):
+    for i, v in enumerate(i[::-1]):
         if v == '1':
             strip.setPixelColor(slownikLampek['N']+ 1 + i, colour['gold'])
 
 def wypiszSec(strip, i):
-    for i, v in enumerate(i):
+    for i, v in enumerate(i[::-1]):
         if v == '1':
             strip.setPixelColor(slownikLampek['T'] - i, colour['royalblue'])
 
 def wypiszDzien(strip, i):
-    for i, v in enumerate(i):
+    for i, v in enumerate(i[::-1]):
         if v == '1':
             strip.setPixelColor(slownikLampek['?'] + i, colour['forestgreen'])
 
@@ -39,15 +39,13 @@ def ZegarBinarny(strip):
     min = "{0:b}".format(min)
     sec = "{0:b}".format(sec)
     day = "{0:b}".format(day)
-    # wypiszDzien(strip,day)
-    # wypiszGodz(strip,hour)
-    # wypiszMin(strip,min)
-    # wypiszSec(strip,sec)
-    print(sec)
-    print(day)
+    wypiszDzien(strip,day)
+    wypiszGodz(strip,hour)
+    wypiszMin(strip,min)
+    wypiszSec(strip,sec)
     strip.show()
 
-ZegarBinarny(0)
+
 
 
 
