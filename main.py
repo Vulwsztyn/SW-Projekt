@@ -37,7 +37,7 @@ def zapalPojedyncze(strip, i):
 def wyswietlLitere(strip,litera):
     czas = 1
     if litera == " ":
-        time.sleep(czas)
+        time.sleep(czas*0.5)
         return
     if litera == ".":
         time.sleep(czas * 2)
