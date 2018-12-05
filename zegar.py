@@ -17,7 +17,7 @@ def wypiszGodz(strip, i):
 def wypiszMin(strip, i):
     for i, v in enumerate(i[::-1]):
         if v == '1':
-            strip.setPixelColor(slownikLampek['N'] + i, colour['gold'])
+            strip.setPixelColor(slownikLampek['N']-1 + i, colour['gold'])
 
 def wypiszSec(strip, i):
     for i, v in enumerate(i[::-1]):
@@ -44,8 +44,6 @@ def ZegarBinarny(strip):
     wypiszMin(strip,min)
     wypiszSec(strip,sec)
     strip.show()
-
-
 
 
 
