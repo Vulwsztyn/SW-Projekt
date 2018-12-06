@@ -46,7 +46,6 @@ def wyswietlLitere(strip,litera):
         zapalPojedyncze(strip,slownikLampek[litera])
         time.sleep(czas)
         strip.show()
-        time.sleep(czas*0.2)
 
 
 def wyswietlTekst(strip,text):
@@ -63,7 +62,7 @@ def getFromWebsite():
     content = str(response.content)
     numer = content[2:content.find(' ')]
     tekst = content[content.find(' ') + 1:len(content) - 5]
-    return int(numer), tekst
+    return int(numer), tekst[0:100]
 
 
 def postToWebsite(i):
@@ -85,5 +84,10 @@ if __name__ == "__main__":
     wyswietlTekst(strip,"it is wednesday my dudes")
     while 2>1:
         clear(strip)
-        ZegarBinarny(strip)
-        time.sleep(1)
+        numer,tresc = getFromWebsite()
+        if numer == 0:
+            ZegarBinarny(strip)
+            time.sleep(1)
+        else:
+            wyswietlTekst(tresc)
+            postToWebsite(numer)
