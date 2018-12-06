@@ -18,7 +18,7 @@ LED_DMA = 10  # DMA channel to use for generating signal (try 10)
 LED_BRIGHTNESS = 30  # Set to 0 for darkest and 255 for brightest
 LED_INVERT = False  # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL = 0  # set to '1' for GPIOs 13, 19, 41, 45 or 53
-
+czas = 1
 
 def clear(strip):
     color = Color(0, 0, 0)
@@ -26,6 +26,11 @@ def clear(strip):
         strip.setPixelColor(i, color)
     strip.show()
 
+def zapalWszystkie(strip):
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, losowyKolor())
+    strip.show()
+    time.sleep(czas)
 
 def zapalPojedyncze(strip, i):
     strip.setPixelColor(i, losowyKolor())
@@ -34,7 +39,7 @@ def zapalPojedyncze(strip, i):
 
 
 def wyswietlLitere(strip, litera):
-    czas = 1
+
     if litera == " ":
         time.sleep(czas * 0.5)
         return
@@ -93,3 +98,4 @@ if __name__ == "__main__":
         else:
             wyswietlTekst(strip, tresc)
             postToWebsite(numer)
+            zapalWszystkie(strip)
