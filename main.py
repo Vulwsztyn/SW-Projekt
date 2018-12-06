@@ -8,7 +8,6 @@ from ColourDict import losowyKolor
 from LampkiDict import slownikLampek
 from zegar import ZegarBinarny
 import random
-listaZnakow = "QWERTYUIOPASDFGHJKLZXCVBNM!@#?ĄĘŚŁŻŹĆÓ"
 
 
 # LED strip configuration:
@@ -42,14 +41,14 @@ def wyswietlLitere(strip,litera):
     if litera == ".":
         time.sleep(czas * 2)
         return
-    if litera in listaZnakow:
+    if litera in list(slownikLampek.keys()):
         zapalPojedyncze(strip,slownikLampek[litera])
         time.sleep(czas)
         strip.show()
 
 
 def wyswietlTekst(strip,text):
-    for i in text.upper():
+    for i in text:
         wyswietlLitere(strip,i)
 
     strip.show()
@@ -60,8 +59,8 @@ def getFromWebsite():
     # print(response.status_code)
     # print(response.content)
     content = str(response.content)
-    numer = content[2:content.find(' ')]
-    tekst = content[content.find(' ') + 1:len(content) - 5]
+    numer = content[0:content.find(' ')]
+    tekst = content[content.find(' ') + 1:len(content) - 1]
     return int(numer), tekst[0:100]
 
 
@@ -81,7 +80,6 @@ if __name__ == "__main__":
     strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
     # Intialize the library (must be called once before other functions).
     strip.begin()
-    wyswietlTekst(strip,"it is wednesday my dudes")
     while 2>1:
         clear(strip)
         numer,tresc = getFromWebsite()
@@ -89,5 +87,5 @@ if __name__ == "__main__":
             ZegarBinarny(strip)
             time.sleep(1)
         else:
-            wyswietlTekst(tresc)
+            wyswietlTekst(strip, tresc)
             postToWebsite(numer)
