@@ -85,8 +85,8 @@ if __name__ == "__main__":
     # Intialize the library (must be called once before other functions).
     strip.begin()
     while 2 > 1:
-        clear(strip)
         numer, tresc = getFromWebsite()
+        clear(strip)
         if numer == 0:
             ZegarBinarny(strip)
             time.sleep(1)
